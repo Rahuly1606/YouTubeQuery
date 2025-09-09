@@ -31,7 +31,7 @@ A React application built with TypeScript, Vite, and Tailwind CSS to search and 
 To start the development server:
 
 ```bash
-bun run dev
+npm run dev
 ```
 
 
