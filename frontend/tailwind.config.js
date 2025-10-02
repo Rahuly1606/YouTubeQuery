@@ -11,14 +11,8 @@ module.exports = {
                 background: 'var(--background)',
                 foreground: 'var(--foreground)',
             },
-            fontFamily: {
-                sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-                mono: ['var(--font-mono)', 'monospace'],
-            },
         },
     },
-    plugins: [
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
-    ],
+    plugins: [],
+    darkMode: 'class',
 }

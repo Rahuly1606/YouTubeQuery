@@ -7,7 +7,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     const quickLinks = [
-        { name: 'GitHub', href: 'https://github.com/yourusername/querytube' },
+        { name: 'GitHub', href: 'https://github.com/Rahuly1606/YouTubeQuery' },
         { name: 'Docs', href: '/api/docs' },
         { name: 'About', href: '#about' },
         { name: 'Contact', href: '#contact' },
@@ -62,7 +62,7 @@ export default function Footer() {
                         className="flex items-center space-x-4"
                     >
                         <a
-                            href="https://github.com/yourusername/querytube"
+                            href="https://github.com/Rahuly1606/YouTubeQuery"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-xl hover:text-red-500 transition-colors duration-200"

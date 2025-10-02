@@ -1,90 +1,119 @@
 /**
- * API Service Functions
- * 
- * All API calls to the QueryTube backend.
+ * API client for QueryTube backend
  */
 
-import apiClient from '@/lib/api';
-import {
-    SearchRequest,
-    SearchResponse,
-    VideoDetail,
-    SystemStatus,
-    IngestCollectRequest,
-    IngestCollectResponse,
-    IngestTranscriptsRequest,
-    IngestTranscriptsResponse,
-    IndexEmbedRequest,
-    IndexEmbedResponse,
-} from '@/types';
+import type { SearchRequest, SearchResponse, VideoDetail } from '@/types';
 
-// ==================== Search ====================
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+/**
+ * Search for videos using semantic search
+ */
 export async function searchVideos(request: SearchRequest): Promise<SearchResponse> {
-    const response = await apiClient.post<SearchResponse>('/api/search', request);
-    return response.data;
-}
-
-export async function searchVideosGet(query: string, topK: number = 5): Promise<SearchResponse> {
-    const response = await apiClient.get<SearchResponse>('/api/search', {
-        params: { q: query, top_k: topK },
+    const response = await fetch(`${API_BASE_URL}/api/search`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
     });
-    return response.data;
+
+    if (!response.ok) {
+        throw new Error(`Search failed: ${response.statusText}`);
+    }
+
+    return response.json();
 }
 
-export async function getAutocomplete(query: string, limit: number = 10): Promise<string[]> {
-    const response = await apiClient.get('/api/autocomplete', {
-        params: { q: query, limit },
+/**
+ * Get video details by ID
+ */
+export async function getVideo(videoId: string): Promise<VideoDetail> {
+    const response = await fetch(`${API_BASE_URL}/api/video/${videoId}`);
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch video: ${response.statusText}`);
+    }
+
+    return response.json();
+}
+
+/**
+ * Check backend health status
+ */
+export async function checkHealth(): Promise<{ status: string; timestamp: string }> {
+    const response = await fetch(`${API_BASE_URL}/api/health`);
+
+    if (!response.ok) {
+        throw new Error(`Health check failed: ${response.statusText}`);
+    }
+
+    return response.json();
+}
+
+/**
+ * Trigger video collection from YouTube
+ */
+export async function collectVideos(params: {
+    channel_id?: string;
+    playlist_id?: string;
+    max_results?: number;
+}): Promise<any> {
+    const response = await fetch(`${API_BASE_URL}/api/ingest/collect`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
     });
-    return response.data.suggestions || [];
+
+    if (!response.ok) {
+        throw new Error(`Collection failed: ${response.statusText}`);
+    }
+
+    return response.json();
 }
 
-// ==================== Video Details ====================
+/**
+ * Trigger transcript fetching
+ */
+export async function fetchTranscripts(params: {
+    video_ids?: string[];
+    force_refresh?: boolean;
+}): Promise<any> {
+    const response = await fetch(`${API_BASE_URL}/api/ingest/transcripts`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    });
 
-export async function getVideoDetail(videoId: string): Promise<VideoDetail> {
-    const response = await apiClient.get<VideoDetail>(`/api/video/${videoId}`);
-    return response.data;
+    if (!response.ok) {
+        throw new Error(`Transcript fetch failed: ${response.statusText}`);
+    }
+
+    return response.json();
 }
 
-export async function getVideoTranscript(videoId: string): Promise<any> {
-    const response = await apiClient.get(`/api/video/${videoId}/transcript`);
-    return response.data;
-}
+/**
+ * Trigger index building
+ */
+export async function buildIndex(params: {
+    model_name?: string;
+    force_rebuild?: boolean;
+}): Promise<any> {
+    const response = await fetch(`${API_BASE_URL}/api/index/embed`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    });
 
-// ==================== Admin ====================
+    if (!response.ok) {
+        throw new Error(`Index build failed: ${response.statusText}`);
+    }
 
-export async function getSystemStatus(): Promise<SystemStatus> {
-    const response = await apiClient.get<SystemStatus>('/api/admin/status');
-    return response.data;
-}
-
-export async function reloadIndex(): Promise<any> {
-    const response = await apiClient.post('/api/admin/reload-index');
-    return response.data;
-}
-
-// ==================== Ingestion ====================
-
-export async function collectVideos(request: IngestCollectRequest): Promise<IngestCollectResponse> {
-    const response = await apiClient.post<IngestCollectResponse>('/api/ingest/collect', request);
-    return response.data;
-}
-
-export async function fetchTranscripts(
-    request: IngestTranscriptsRequest
-): Promise<IngestTranscriptsResponse> {
-    const response = await apiClient.post<IngestTranscriptsResponse>('/api/ingest/transcripts', request);
-    return response.data;
-}
-
-export async function createEmbeddings(request: IndexEmbedRequest): Promise<IndexEmbedResponse> {
-    const response = await apiClient.post<IndexEmbedResponse>('/api/ingest/embed', request);
-    return response.data;
-}
-
-// ==================== Health ====================
-
-export async function checkHealth(): Promise<{ status: string }> {
-    const response = await apiClient.get('/health');
-    return response.data;
+    return response.json();
 }

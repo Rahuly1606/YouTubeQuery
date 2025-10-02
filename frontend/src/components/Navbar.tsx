@@ -57,7 +57,7 @@ export default function Navbar() {
                         className="hidden md:flex items-center space-x-4"
                     >
                         <a
-                            href="https://github.com/yourusername/querytube"
+                            href="https://github.com/Rahuly1606/YouTubeQuery"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-700 dark:text-gray-200 hover:text-red-600 dark:hover:text-red-500 
@@ -109,7 +109,7 @@ export default function Navbar() {
                             ))}
                             <div className="pt-3 space-y-2">
                                 <a
-                                    href="https://github.com/yourusername/querytube"
+                                    href="https://github.com/Rahuly1606/YouTubeQuery"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block text-gray-700 dark:text-gray-200 hover:text-red-600 dark:hover:text-red-500 
