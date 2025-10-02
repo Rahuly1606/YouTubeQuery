@@ -1,292 +1,584 @@
-<div align="center"><div align="center">
+<div align="center"><div align="center"><div align="center">
 
 
 
-# 🎬 QueryTube# 🎬 QueryTube
+# 🎬 QueryTube
 
 
 
-### AI-Powered YouTube Semantic Search Engine### AI-Powered YouTube Semantic Search Engine
+### AI-Powered YouTube Semantic Search Engine# 🎬 QueryTube# 🎬 QueryTube
 
 
 
-<p align="center"><p align="center">
+<p align="center">
 
-  <strong>Search YouTube videos using natural language. Find exactly what you're looking for in seconds.</strong>  <strong>Search YouTube videos using natural language. Find exactly what you're looking for in seconds.</strong>
+  <strong>Search YouTube videos using natural language. Find exactly what you're looking for in seconds.</strong>
 
-</p></p>
-
-
-
-<p align="center"><p align="center">
-
-  <a href="#-features">Features</a> •  <a href="#-features">Features</a> •
-
-  <a href="#-quick-start">Quick Start</a> •  <a href="#-quick-start">Quick Start</a> •
-
-  <a href="#-tech-stack">Tech Stack</a> •  <a href="#-demo">Demo</a> •
-
-  <a href="#-api-reference">API</a> •  <a href="#-api-docs">API</a> •
-
-  <a href="#-deployment">Deploy</a>  <a href="#-deployment">Deploy</a>
-
-</p></p>
+</p>### AI-Powered YouTube Semantic Search Engine### AI-Powered YouTube Semantic Search Engine
 
 
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+<p align="center">
+
+  <a href="#-features">Features</a> •
+
+  <a href="#-quick-start">Quick Start</a> •<p align="center"><p align="center">
+
+  <a href="#-tech-stack">Tech Stack</a> •
+
+  <a href="#-api-reference">API</a> •  <strong>Search YouTube videos using natural language. Find exactly what you're looking for in seconds.</strong>  <strong>Search YouTube videos using natural language. Find exactly what you're looking for in seconds.</strong>
+
+  <a href="#-deployment">Deploy</a>
+
+</p></p></p>
+
+
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+
+![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=flat-square&logo=fastapi)
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)<p align="center"><p align="center">
+
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
+
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)  <a href="#-features">Features</a> •  <a href="#-features">Features</a> •
+
+
+
+</div>  <a href="#-quick-start">Quick Start</a> •  <a href="#-quick-start">Quick Start</a> •
+
+
+
+---  <a href="#-tech-stack">Tech Stack</a> •  <a href="#-demo">Demo</a> •
+
+
+
+## ✨ Features  <a href="#-api-reference">API</a> •  <a href="#-api-docs">API</a> •
+
+
+
+🔍 **Semantic Search** - AI-powered natural language queries using Sentence Transformers    <a href="#-deployment">Deploy</a>  <a href="#-deployment">Deploy</a>
+
+🎯 **Transcript Analysis** - Search actual video content, not just titles or descriptions  
+
+⚡ **Lightning Fast** - FAISS vector index delivers instant results  </p></p>
+
+🎨 **Modern UI** - Beautiful Next.js frontend with Tailwind CSS and smooth animations  
+
+📊 **Rich Results** - View counts, timestamps, relevance scores, and video previews  
+
+🔧 **Easy Setup** - Automated scripts for data collection and indexing  
+
+🐳 **Docker Ready** - Complete containerization with docker-compose  ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+
+📱 **Responsive** - Works perfectly on desktop, tablet, and mobile
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=flat-square&logo=fastapi)![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?style=flat-square&logo=fastapi)
 
+---
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)
+
+## 🚀 Quick Start
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
 
+### Prerequisites
+
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
+- **Python 3.8+** and **Node.js 16+**
 
-
-</div></div>
-
-
-
-------
+- **YouTube Data API Key** - [Get one free here](https://console.cloud.google.com/apis/credentials)
 
 
 
-## ✨ Features## ✨ Features
+### ⚡ Installation (5 Minutes)</div></div>
 
 
+
+```bash
+
+# 1️⃣ Clone the repository
+
+git clone https://github.com/Rahuly1606/YouTubeQuery.git------
+
+cd YouTubeQuery
+
+
+
+# 2️⃣ Backend Setup
+
+cd backend## ✨ Features## ✨ Features
+
+python -m venv venv
+
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
 
 🔍 **Semantic Search** - AI-powered natural language queries using Sentence Transformers  🔍 **Semantic Search** - AI-powered natural language queries  
 
-🎯 **Transcript Analysis** - Search actual video content, not just titles or descriptions  🎯 **Transcript Analysis** - Search actual video content, not just titles  
+# 3️⃣ Set YouTube API Key
 
-⚡ **Lightning Fast** - FAISS vector index delivers instant results  ⚡ **Lightning Fast** - FAISS vector index for instant results  
+export YOUTUBE_API_KEY="your_api_key"  # Windows: $env:YOUTUBE_API_KEY="your_api_key"🎯 **Transcript Analysis** - Search actual video content, not just titles or descriptions  🎯 **Transcript Analysis** - Search actual video content, not just titles  
+
+
+
+# 4️⃣ Collect Videos (Example: Python tutorials)⚡ **Lightning Fast** - FAISS vector index delivers instant results  ⚡ **Lightning Fast** - FAISS vector index for instant results  
+
+python scripts/collect_youtube.py --channel-id UCCezIgC97PvUuR4_gbFUs5g --max-results 30
 
 🎨 **Modern UI** - Beautiful Next.js frontend with Tailwind CSS and smooth animations  🎨 **Modern UI** - Beautiful Next.js frontend with smooth animations  
 
-📊 **Rich Results** - View counts, timestamps, relevance scores, and video previews  📊 **Rich Results** - View counts, timestamps, and relevance scores  
+# 5️⃣ Fetch Transcripts
 
-🔧 **Easy Setup** - Automated scripts for data collection and indexing  🔧 **Easy Setup** - Automated scripts for data collection  
+python scripts/get_transcripts.py --delay 2.5📊 **Rich Results** - View counts, timestamps, relevance scores, and video previews  📊 **Rich Results** - View counts, timestamps, and relevance scores  
+
+
+
+# 6️⃣ Generate AI Search Index🔧 **Easy Setup** - Automated scripts for data collection and indexing  🔧 **Easy Setup** - Automated scripts for data collection  
+
+python scripts/embed_and_index.py
 
 🐳 **Docker Ready** - Complete containerization with docker-compose  🐳 **Docker Ready** - Complete containerization included## 📋 Prerequisites
 
-📱 **Responsive** - Works perfectly on desktop, tablet, and mobile
+# 7️⃣ Start Backend
+
+uvicorn app.main:app --reload📱 **Responsive** - Works perfectly on desktop, tablet, and mobile
+
+
+
+# 8️⃣ Start Frontend (new terminal)
+
+cd ../frontend
+
+npm install---
+
+npm run dev
+
+```---### Required API Keys & Accounts
+
+
+
+**🎉 Open http://localhost:3000 and start searching!**## 🚀 Quick Start
 
 
 
 ---
 
----### Required API Keys & Accounts
-
-## 🚀 Quick Start
 
 
-
-### Prerequisites
-
-## ✨ Features1. **Google Cloud / YouTube Data API v3**
-
-- **Python 3.8+** and **Node.js 16+**
-
-- **YouTube Data API Key** - [Get one free here](https://console.cloud.google.com/apis/credentials)   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+## 🐳 Docker Setup (Recommended)### Prerequisites
 
 
+
+```bash## ✨ Features1. **Google Cloud / YouTube Data API v3**
+
+# One command to start everything
+
+docker-compose up --build- **Python 3.8+** and **Node.js 16+**
+
+
+
+# ✅ Frontend: http://localhost:3000- **YouTube Data API Key** - [Get one free here](https://console.cloud.google.com/apis/credentials)   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+
+# ✅ Backend API: http://localhost:8000
+
+# ✅ API Docs: http://localhost:8000/docs
+
+```
 
 ### ⚡ Installation (5 Minutes)- 🔍 **Semantic Search** - Natural language queries using AI embeddings   - Create a new project or select existing
 
+---
 
+
+
+## 💻 Tech Stack
 
 ```bash- 🎯 **Transcript-Based** - Search actual video content, not just titles   - Enable "YouTube Data API v3"
 
-# 1️⃣ Clone the repository
+### Frontend
 
-git clone https://github.com/Rahuly1606/YouTubeQuery.git- ⚡ **Fast** - FAISS vector index for instant results   - Create API Key (Credentials → Create Credentials → API Key)
+- **Next.js 14** - React framework with App Router# 1️⃣ Clone the repository
 
-cd YouTubeQuery
+- **TypeScript** - Type safety and better DX
 
-- 🎨 **Modern UI** - Clean Next.js frontend with real-time search   - Copy the key for `YOUTUBE_API_KEY` in `.env`
+- **Tailwind CSS** - Utility-first stylinggit clone https://github.com/Rahuly1606/YouTubeQuery.git- ⚡ **Fast** - FAISS vector index for instant results   - Create API Key (Credentials → Create Credentials → API Key)
 
-# 2️⃣ Backend Setup
+- **Framer Motion** - Smooth animations
 
-cd backend- 🔧 **Easy Setup** - Automated scripts for data collection
+- **Heroicons** - Beautiful icon librarycd YouTubeQuery
+
+
+
+### Backend- 🎨 **Modern UI** - Clean Next.js frontend with real-time search   - Copy the key for `YOUTUBE_API_KEY` in `.env`
+
+- **FastAPI** - Modern Python web framework
+
+- **Sentence-Transformers** - AI embeddings (all-MiniLM-L6-v2)# 2️⃣ Backend Setup
+
+- **FAISS** - Facebook's vector similarity search
+
+- **Pydantic** - Data validationcd backend- 🔧 **Easy Setup** - Automated scripts for data collection
+
+- **Uvicorn** - Lightning-fast ASGI server
 
 python -m venv venv
 
-source venv/bin/activate  # Windows: venv\Scripts\activate- 📊 **Real-time Analytics** - View counts, timestamps, and relevance scores2. **HuggingFace Token** (Optional - only for private models)
+### Data Pipeline
 
-pip install -r requirements.txt
+- **YouTube Data API v3** - Video metadatasource venv/bin/activate  # Windows: venv\Scripts\activate- 📊 **Real-time Analytics** - View counts, timestamps, and relevance scores2. **HuggingFace Token** (Optional - only for private models)
+
+- **yt-dlp** - Reliable transcript extraction
+
+- **pandas** - Data processingpip install -r requirements.txt
+
+- **numpy** - Numerical operations
 
    - Go to [HuggingFace Settings](https://huggingface.co/settings/tokens)
 
+---
+
 # 3️⃣ Set YouTube API Key
+
+## 📊 Recommended YouTube Channels
 
 export YOUTUBE_API_KEY="your_api_key"  # Windows: $env:YOUTUBE_API_KEY="your_api_key"---   - Create a read token
 
+Channels with high transcript availability for better results:
 
 
-# 4️⃣ Collect Videos (Example: Python tutorials from Corey Schafer)   - Add to `HF_TOKEN` in `.env`
 
-python scripts/collect_youtube.py --channel-id UCCezIgC97PvUuR4_gbFUs5g --max-results 30
+| Channel | ID | Topic | Success Rate |
 
-## 🚀 Quick Start
+|---------|-----|-------|--------------|# 4️⃣ Collect Videos (Example: Python tutorials from Corey Schafer)   - Add to `HF_TOKEN` in `.env`
+
+| Corey Schafer | `UCCezIgC97PvUuR4_gbFUs5g` | Python | 90%+ |
+
+| Fireship | `UCsBjURrPoezykLs9EqgamOA` | Tech | 85%+ |python scripts/collect_youtube.py --channel-id UCCezIgC97PvUuR4_gbFUs5g --max-results 30
+
+| TED-Ed | `UCsooa4yRKGN_zEE8iknghZA` | Education | 95%+ |
+
+| Khan Academy | `UCvjgXvBlbQiydffTU1ulV5w` | Math/Science | 90%+ |## 🚀 Quick Start
+
+| freeCodeCamp | `UC8butISFwT-Wl7EV0hUK0BQ` | Programming | 80%+ |
 
 # 5️⃣ Fetch Transcripts
 
+### Collect Videos
+
 python scripts/get_transcripts.py --delay 2.53. **Pinecone** (Optional - for production vector store)
 
+```bash
 
+# From a channel
+
+python scripts/collect_youtube.py --channel-id CHANNEL_ID --max-results 50
 
 # 6️⃣ Generate AI Search Index### Prerequisites   - Sign up at [Pinecone](https://www.pinecone.io/)
 
-python scripts/embed_and_index.py
+# From a playlist
+
+python scripts/collect_youtube.py --playlist-id PLAYLIST_ID --max-results 100python scripts/embed_and_index.py
+
+```
 
    - Get API key and environment
 
+---
+
 # 7️⃣ Start Backend (Terminal 1)
+
+## 🔍 API Reference
 
 uvicorn app.main:app --reload- Python 3.8+   - Add to `.env` if using Pinecone instead of FAISS
 
+### Search Endpoint
 
 
-# 8️⃣ Start Frontend (Terminal 2 - new terminal)- Node.js 16+
+
+```http
+
+POST /api/search# 8️⃣ Start Frontend (Terminal 2 - new terminal)- Node.js 16+
+
+Content-Type: application/json
 
 cd ../frontend
 
-npm install- YouTube Data API v3 Key ([Get one here](https://console.cloud.google.com/))## 🛠️ Tech Stack
+{
 
-npm run dev
+  "query": "machine learning tutorial",npm install- YouTube Data API v3 Key ([Get one here](https://console.cloud.google.com/))## 🛠️ Tech Stack
+
+  "top_k": 10,
+
+  "metric": "cosine"npm run dev
+
+}
+
+``````
+
+
+
+**Response:**
+
+```json
+
+{**🎉 Open http://localhost:3000 and start searching!**### Setup in 5 Minutes### Frontend
+
+  "query": "machine learning tutorial",
+
+  "results": [
+
+    {
+
+      "video_id": "abc123",---- **Next.js 14** (TypeScript, App Router)
+
+      "title": "Complete Machine Learning Course",
+
+      "channel": "Tech Channel",
+
+      "score": 0.89,
+
+      "snippet": "...relevant transcript...",## 🐳 Docker Setup (Recommended)```bash- **Tailwind CSS** - Styling
+
+      "thumbnail_url": "https://...",
+
+      "view_count": 125000,
+
+      "duration": "PT15M30S"
+
+    }```bash# 1. Backend Setup- **Framer Motion** - Animations
+
+  ],
+
+  "total": 10,# One command to start everything
+
+  "took_ms": 45.2
+
+}docker-compose up --buildcd backend- **Headless UI** - Accessible components
 
 ```
 
 
 
-**🎉 Open http://localhost:3000 and start searching!**### Setup in 5 Minutes### Frontend
-
-
-
----- **Next.js 14** (TypeScript, App Router)
-
-
-
-## 🐳 Docker Setup (Recommended)```bash- **Tailwind CSS** - Styling
-
-
-
-```bash# 1. Backend Setup- **Framer Motion** - Animations
-
-# One command to start everything
-
-docker-compose up --buildcd backend- **Headless UI** - Accessible components
-
-
+### Available Endpoints
 
 # ✅ Frontend: http://localhost:3000python -m venv venv- **React Query** - Data fetching & caching
 
-# ✅ Backend API: http://localhost:8000
+```bash
 
-# ✅ API Docs: http://localhost:8000/docs.\venv\Scripts\Activate.ps1  # Windows
+GET  /api/video/{video_id}      # Get video details# ✅ Backend API: http://localhost:8000
+
+GET  /api/health                # Health check
+
+POST /api/ingest/collect        # Collect videos# ✅ API Docs: http://localhost:8000/docs.\venv\Scripts\Activate.ps1  # Windows
+
+POST /api/ingest/transcripts    # Fetch transcripts
+
+POST /api/index/embed           # Build search index```
 
 ```
 
 # source venv/bin/activate    # Mac/Linux### Backend
 
+**📖 Interactive API Docs:** http://localhost:8000/docs
+
+---
+
 ---
 
 pip install -r requirements.txt- **FastAPI** - Python web framework
 
+## 🔧 Configuration
+
 ## 💻 Tech Stack
+
+### Environment Variables
 
 - **Sentence-Transformers** - Embedding generation (all-MiniLM-L6-v2)
 
+Create a `.env` file in the root:
+
 ### Frontend
 
-- **Next.js 14** - React framework with App Router# 2. Set API Key- **FAISS** - Vector similarity search
+```env
+
+# Required- **Next.js 14** - React framework with App Router# 2. Set API Key- **FAISS** - Vector similarity search
+
+YOUTUBE_API_KEY=your_youtube_api_key_here
 
 - **TypeScript** - Type safety
 
-- **Tailwind CSS** - Utility-first styling$env:YOUTUBE_API_KEY = "your_youtube_api_key_here"- **Pydantic** - Data validation
+# Optional
 
-- **Framer Motion** - Smooth animations
+VECTOR_STORE=faiss- **Tailwind CSS** - Utility-first styling$env:YOUTUBE_API_KEY = "your_youtube_api_key_here"- **Pydantic** - Data validation
 
-- **Heroicons** - Beautiful icons- **Uvicorn** - ASGI server
+DATABASE_URL=sqlite:///./querytube.db
+
+BACKEND_PORT=8000- **Framer Motion** - Smooth animations
+
+NEXT_PUBLIC_API_URL=http://localhost:8000
+
+```- **Heroicons** - Beautiful icons- **Uvicorn** - ASGI server
 
 
 
-### Backend# 3. Collect Videos (choose a channel with good transcripts)
+### Custom Embedding Models
 
-- **FastAPI** - Modern Python web framework
 
-- **Sentence-Transformers** - AI embeddings (all-MiniLM-L6-v2)python scripts/collect_youtube.py --channel-id UCCezIgC97PvUuR4_gbFUs5g --max-results 30### Data Pipeline
+
+```bash### Backend# 3. Collect Videos (choose a channel with good transcripts)
+
+# Default (fast, 384 dimensions)
+
+python scripts/embed_and_index.py --model all-MiniLM-L6-v2- **FastAPI** - Modern Python web framework
+
+
+
+# Better quality (slower, 768 dimensions)- **Sentence-Transformers** - AI embeddings (all-MiniLM-L6-v2)python scripts/collect_youtube.py --channel-id UCCezIgC97PvUuR4_gbFUs5g --max-results 30### Data Pipeline
+
+python scripts/embed_and_index.py --model all-mpnet-base-v2
 
 - **FAISS** - Facebook's vector similarity search
 
-- **Pydantic** - Data validation- **google-api-python-client** - YouTube API
+# Multilingual support
 
-- **Uvicorn** - Lightning-fast ASGI server
-
-# 4. Fetch Transcripts- **youtube-transcript-api** - Transcript extraction
-
-### Data & AI
-
-- **YouTube Data API v3** - Video metadatapython scripts/get_transcripts.py --delay 2.5 --max-retries 5- **pandas** - Data processing
-
-- **youtube-transcript-api** / **yt-dlp** - Transcript extraction
-
-- **pandas** - Data processing- **SQLite/PostgreSQL** - Metadata storage
-
-- **numpy** - Numerical operations
-
-# 5. Generate Search Index
-
----
-
-python scripts/embed_and_index.py## 📁 Project Structure
-
-## 📊 Data Collection
-
-
-
-### Recommended YouTube Channels (High Transcript Availability)
-
-# 6. Start Backend```
-
-| Channel | ID | Topic | Success Rate |
-
-|---------|-----|-------|--------------|uvicorn app.main:app --reloadYoutube-Query/
-
-| Corey Schafer | `UCCezIgC97PvUuR4_gbFUs5g` | Python | 90%+ |
-
-| Fireship | `UCsBjURrPoezykLs9EqgamOA` | Tech | 85%+ |├── backend/
-
-| TED-Ed | `UCsooa4yRKGN_zEE8iknghZA` | Education | 95%+ |
-
-| Khan Academy | `UCvjgXvBlbQiydffTU1ulV5w` | Math/Science | 90%+ |# 7. In NEW terminal - Start Frontend│   ├── app/
-
-| freeCodeCamp | `UC8butISFwT-Wl7EV0hUK0BQ` | Programming | 80%+ |
-
-cd frontend│   │   ├── main.py              # FastAPI application
-
-### Collect from Channel
-
-npm install│   │   ├── api/                 # API endpoints
-
-```bash
-
-python scripts/collect_youtube.py --channel-id CHANNEL_ID --max-results 50npm run dev│   │   │   ├── search.py
+python scripts/embed_and_index.py --model paraphrase-multilingual-MiniLM-L12-v2- **Pydantic** - Data validation- **google-api-python-client** - YouTube API
 
 ```
 
-│   │   │   ├── ingest.py
+- **Uvicorn** - Lightning-fast ASGI server
+
+---
+
+# 4. Fetch Transcripts- **youtube-transcript-api** - Transcript extraction
+
+## 🐛 Troubleshooting
+
+### Data & AI
+
+### "429 Too Many Requests"
+
+YouTube is rate limiting. Use slower delays:- **YouTube Data API v3** - Video metadatapython scripts/get_transcripts.py --delay 2.5 --max-retries 5- **pandas** - Data processing
+
+```bash
+
+python scripts/get_transcripts.py --delay 5.0 --max-retries 3- **youtube-transcript-api** / **yt-dlp** - Transcript extraction
+
+```
+
+- **pandas** - Data processing- **SQLite/PostgreSQL** - Metadata storage
+
+### "No transcripts found"
+
+Not all videos have transcripts. Expected success rate: 30-90% depending on channel. Try educational channels for best results.- **numpy** - Numerical operations
+
+
+
+### "YOUTUBE_API_KEY not set"# 5. Generate Search Index
+
+Set the environment variable:
+
+```bash---
+
+# Windows PowerShell
+
+$env:YOUTUBE_API_KEY = "your_key"python scripts/embed_and_index.py## 📁 Project Structure
+
+
+
+# Mac/Linux## 📊 Data Collection
+
+export YOUTUBE_API_KEY="your_key"
+
+```
+
+
+
+### Frontend Can't Connect### Recommended YouTube Channels (High Transcript Availability)
+
+1. Check backend is running: http://localhost:8000/health
+
+2. Verify `.env` has: `NEXT_PUBLIC_API_URL=http://localhost:8000`# 6. Start Backend```
+
+3. Clear browser cache and restart dev server
+
+| Channel | ID | Topic | Success Rate |
+
+---
+
+|---------|-----|-------|--------------|uvicorn app.main:app --reloadYoutube-Query/
+
+## 🚢 Deployment
+
+| Corey Schafer | `UCCezIgC97PvUuR4_gbFUs5g` | Python | 90%+ |
+
+### Vercel (Frontend)
+
+| Fireship | `UCsBjURrPoezykLs9EqgamOA` | Tech | 85%+ |├── backend/
+
+```bash
+
+cd frontend| TED-Ed | `UCsooa4yRKGN_zEE8iknghZA` | Education | 95%+ |
+
+npm i -g vercel
+
+vercel --prod| Khan Academy | `UCvjgXvBlbQiydffTU1ulV5w` | Math/Science | 90%+ |# 7. In NEW terminal - Start Frontend│   ├── app/
+
+
+
+# Set in Vercel dashboard:| freeCodeCamp | `UC8butISFwT-Wl7EV0hUK0BQ` | Programming | 80%+ |
+
+# NEXT_PUBLIC_API_URL=https://your-backend.railway.app
+
+```cd frontend│   │   ├── main.py              # FastAPI application
+
+
+
+### Railway (Backend)### Collect from Channel
+
+
+
+```bashnpm install│   │   ├── api/                 # API endpoints
+
+cd backend
+
+npm i -g @railway/cli```bash
+
+railway login
+
+railway initpython scripts/collect_youtube.py --channel-id CHANNEL_ID --max-results 50npm run dev│   │   │   ├── search.py
+
+railway up
+
+```
+
+# Add in Railway dashboard:
+
+# YOUTUBE_API_KEY=your_key│   │   │   ├── ingest.py
+
+```
 
 ### Collect from Playlist
+
+### Docker Hub
 
 # 8. Open http://localhost:3000 🎉│   │   │   └── video.py
 
 ```bash
 
-python scripts/collect_youtube.py --playlist-id PLAYLIST_ID --max-results 100```│   │   ├── models/              # Pydantic models
+# Build and push```bash
+
+docker build -t your-username/querytube-backend ./backend
+
+docker build -t your-username/querytube-frontend ./frontendpython scripts/collect_youtube.py --playlist-id PLAYLIST_ID --max-results 100```│   │   ├── models/              # Pydantic models
+
+docker push your-username/querytube-backend
+
+docker push your-username/querytube-frontend```
 
 ```
 
@@ -294,77 +586,152 @@ python scripts/collect_youtube.py --playlist-id PLAYLIST_ID --max-results 100```
 
 ---
 
+---
+
+## 📈 Performance Tips
+
 ---│   │   │   ├── vector_search.py
 
-## 🔍 API Reference
+1. **Start Small** - Test with 20-30 videos first
 
-│   │   │   └── youtube_service.py
+2. **Choose Wisely** - Educational channels = better transcripts## 🔍 API Reference
+
+3. **Rate Limiting** - Use `--delay 2.5` minimum
+
+4. **Batch Processing** - Collect in batches with breaks│   │   │   └── youtube_service.py
+
+5. **Monitor Logs** - Check errors in console output
 
 ### Search Endpoint
 
+---
+
 ## 📦 Installation│   │   └── config.py            # Configuration
+
+## 🎯 Search Query Examples
 
 ```http
 
+Try these queries to test your setup:
+
 POST /api/search│   ├── Dockerfile
 
-Content-Type: application/json
+- "explain async await in python"
 
-### Backend│   ├── requirements.txt
+- "what is machine learning"Content-Type: application/json
 
-{
+- "how to center a div in CSS"
 
-  "query": "machine learning tutorial",│   └── tests/
+- "best practices for API design"### Backend│   ├── requirements.txt
 
-  "top_k": 10,
+- "introduction to neural networks"
 
-  "metric": "cosine"```bash├── frontend/
+- "debugging tips and tricks"{
 
-}
+- "python decorators tutorial"
 
-```cd backend│   ├── src/
+- "react hooks explained"  "query": "machine learning tutorial",│   └── tests/
 
 
 
-**Response:**python -m venv venv│   │   ├── app/                 # Next.js pages
+---  "top_k": 10,
 
-```json
 
-{│   │   ├── components/          # React components
 
-  "query": "machine learning tutorial",
+## 🤝 Contributing  "metric": "cosine"```bash├── frontend/
 
-  "results": [# Activate virtual environment│   │   │   ├── SearchBar.tsx
 
-    {
 
-      "video_id": "abc123",.\venv\Scripts\Activate.ps1    # Windows PowerShell│   │   │   ├── ResultCard.tsx
+Contributions are welcome! Here's how:}
 
-      "title": "Complete Machine Learning Course",
 
-      "channel": "Tech Channel",# source venv/bin/activate      # Mac/Linux│   │   │   ├── VideoPlayer.tsx
 
-      "score": 0.89,
+1. Fork the repository```cd backend│   ├── src/
 
-      "snippet": "...relevant transcript snippet...",│   │   │   └── ThemeToggle.tsx
+2. Create feature branch: `git checkout -b feature/AmazingFeature`
 
-      "thumbnail_url": "https://...",
+3. Commit changes: `git commit -m 'Add AmazingFeature'`
 
-      "view_count": 125000,pip install -r requirements.txt│   │   └── lib/                 # Utilities
+4. Push to branch: `git push origin feature/AmazingFeature`
 
-      "duration": "PT15M30S"
+5. Open a Pull Request**Response:**python -m venv venv│   │   ├── app/                 # Next.js pages
 
-    }```│   ├── public/
 
-  ],
 
-  "total": 10,│   ├── Dockerfile
+---```json
 
-  "took_ms": 45.2
 
-}**Key Dependencies:**│   └── package.json
 
-```
+## 📄 License{│   │   ├── components/          # React components
+
+
+
+MIT License - see [LICENSE](LICENSE) file for details.  "query": "machine learning tutorial",
+
+
+
+---  "results": [# Activate virtual environment│   │   │   ├── SearchBar.tsx
+
+
+
+## 🙏 Acknowledgments    {
+
+
+
+- [Sentence-Transformers](https://www.sbert.net/) - State-of-the-art embeddings      "video_id": "abc123",.\venv\Scripts\Activate.ps1    # Windows PowerShell│   │   │   ├── ResultCard.tsx
+
+- [FAISS](https://github.com/facebookresearch/faiss) - Efficient similarity search
+
+- [YouTube Data API](https://developers.google.com/youtube/v3) - Video metadata      "title": "Complete Machine Learning Course",
+
+- [FastAPI](https://fastapi.tiangolo.com/) - Modern Python framework
+
+- [Next.js](https://nextjs.org/) - React framework for production      "channel": "Tech Channel",# source venv/bin/activate      # Mac/Linux│   │   │   ├── VideoPlayer.tsx
+
+
+
+---      "score": 0.89,
+
+
+
+## 📞 Support      "snippet": "...relevant transcript snippet...",│   │   │   └── ThemeToggle.tsx
+
+
+
+- **Issues:** [GitHub Issues](https://github.com/Rahuly1606/YouTubeQuery/issues)      "thumbnail_url": "https://...",
+
+- **Discussions:** [GitHub Discussions](https://github.com/Rahuly1606/YouTubeQuery/discussions)
+
+- **Email:** support@querytube.com      "view_count": 125000,pip install -r requirements.txt│   │   └── lib/                 # Utilities
+
+
+
+---      "duration": "PT15M30S"
+
+
+
+<div align="center">    }```│   ├── public/
+
+
+
+**Built with ❤️ using Python, TypeScript, and AI**  ],
+
+
+
+⭐ **Star this repo if you find it helpful!** ⭐  "total": 10,│   ├── Dockerfile
+
+
+
+[Report Bug](https://github.com/Rahuly1606/YouTubeQuery/issues) ·   "took_ms": 45.2
+
+[Request Feature](https://github.com/Rahuly1606/YouTubeQuery/issues) · 
+
+[View Demo](https://querytube-demo.vercel.app)}**Key Dependencies:**│   └── package.json
+
+
+
+</div>```
+
 
 - `fastapi` - Web framework├── scripts/
 
