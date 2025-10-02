@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: querytube-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      - HF_TOKEN=${HF_TOKEN:-}
+      - VECTOR_STORE=${VECTOR_STORE:-faiss}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      - DATABASE_URL=${DATABASE_URL:-sqlite:///./querytube.db}
+      - BACKEND_HOST=0.0.0.0
+      - BACKEND_PORT=8000
+      - CORS_ORIGINS=http://localhost:3000,http://frontend:3000
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - PINECONE_API_KEY=${PINECONE_API_KEY:-}
+      - PINECONE_ENVIRONMENT=${PINECONE_ENVIRONMENT:-}
+      - PINECONE_INDEX_NAME=${PINECONE_INDEX_NAME:-}
+    volumes:
+      - ./backend/app:/app/app
+      - ./data:/app/data
+      - backend-cache:/root/.cache
+    networks:
+      - querytube-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=http://localhost:8000
+    container_name: querytube-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+      - NODE_ENV=development
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - frontend-node-modules:/app/node_modules
+    networks:
+      - querytube-network
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: PostgreSQL for production
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: querytube-db
+  #   environment:
+  #     - POSTGRES_USER=querytube
+  #     - POSTGRES_PASSWORD=querytube_password
+  #     - POSTGRES_DB=querytube
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   networks:
+  #     - querytube-network
+  #   ports:
+  #     - "5432:5432"
+  #   restart: unless-stopped
+
+networks:
+  querytube-network:
+    driver: bridge
+
+volumes:
+  backend-cache:
+  frontend-node-modules:
+  # postgres-data:

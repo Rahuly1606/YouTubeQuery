@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: querytube-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: querytube_root_password
+      MYSQL_DATABASE: querytube
+      MYSQL_USER: querytube_user
+      MYSQL_PASSWORD: querytube_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - querytube-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # phpMyAdmin (Optional - for database management)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: querytube-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: querytube_root_password
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - querytube-network
+
+  # QueryTube Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: querytube-backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=mysql+aiomysql://querytube_user:querytube_password@mysql:3306/querytube
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=querytube
+      - DB_USER=querytube_user
+      - DB_PASSWORD=querytube_password
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./backend/.env:/app/.env
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - querytube-network
+
+  # QueryTube Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: querytube-frontend
+    restart: unless-stopped
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - querytube-network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  querytube-network:
+    driver: bridge
